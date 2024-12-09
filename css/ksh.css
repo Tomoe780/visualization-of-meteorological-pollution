@@ -1,0 +1,68 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr); /* 定义12列的网格布局 */
+    grid-template-rows: repeat(12, 1fr); /* 定义12行的网格布局 */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 将标题1放在地图上方，占据顶部一行的网格空间，横跨所有列 */
+#title1 {
+    grid-area: 1 / 1 / 2 / 13;
+    z-index: 99;
+    text-align: center;
+    color: black;
+    font-size: 20px;
+}
+
+/* 地图相关元素在标题1下方，占据左侧6列 */
+#echarts_bmap {
+    grid-area: 2 / 1 / 13 / 7;
+    border: 2px solid black;
+}
+
+/* 其他元素调整到右边区域，从第7列开始放置 */
+#chart {
+    border-top: 2px solid black;
+    height: 400px;
+    grid-area: 2 / 7 / 8 / 10;
+    z-index: 999;
+}
+
+#radarChart {
+    grid-area: 2 / 10 / 6 / 13;
+    border: 2px solid black;
+    margin: 0;
+    padding: 0;
+}
+
+#timechange {
+    grid-area: 6 / 10 / 13 / 13;
+    border: 2px solid black;
+}
+
+#main {
+    background-color: #eeeeee;
+}
+
+#title2 {
+    height: 179px;
+    grid-area: 8 / 7 / 8 / 10;
+    z-index: 99;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+#title3 {
+    grid-area: 3 / 10 / 3 / 13;
+    z-index: 99;
+}
+
+#title4 {
+    grid-area: 8 / 10 / 8 / 13;
+    z-index: 99;
+}

@@ -1,126 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html style="background-color: #eeeeee">
+
 <head>
-	<meta charset="utf-8">
-	<title></title>
-	<script src="./js/echarts.min.js"></script>
-	<script src="./js/bmap.min.js"></script>
-	<script type="text/javascript" src="//api.map.baidu.com/api?v=3.0&ak=xa1xOaW0OtUUPTazidupi8QngTjhe6m7"></script>
-	<script src="./js/d3.min.js"></script>
-	<link rel="./css/ksh.css"/>
+    <meta charset="utf-8">
+    <title>气象污染可视化系统</title>
+    <script src="./js/echarts.min.js"></script>
+    <script src="./js/bmap.min.js"></script>
+    <script type="text/javascript" src="//api.map.baidu.com/api?v=3.0&ak=xa1xOaW0OtUUPTazidupi8QngTjhe6m7"></script>
+    <script src="./js/d3.min.js"></script>
+
+    <!-- 引入外部CSS文件 -->
+    <link rel="stylesheet" type="text/css" href="./css/ksh.css">
 </head>
-<style>
-	.container{
-		width: 100vw;
-		height: 100vh;
-		display: grid;
-		grid-template-columns: repeat(12,1fr);
-		grid-template-rows: repeat(12,1fr);
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-	}
-	#echarts_bmap {
-		grid-area: 1/4/9/10;
-		border: 2px solid black;
-	}
-	#jiangyu{
-		grid-area: 9/1/13/10;
-		border: 2px solid black;
-	}
-	#chart1{
-		grid-area: 2/1/9/4;
-		border: 2px solid black;
-	}
-	#chart{
-		grid-area: 2/1/8/4;
-		z-index: 999;
-	}
-	#radarChart{
-		grid-area: 1/10/6/13;
-		border: 2px solid black;
-		margin: 0;
-		padding: 0;
-	}
-	#timechange{
-		grid-area: 6/10/13/13;
-		border: 2px solid black;
-	}
-	#butt{
-		grid-area: 9/2/10/4;
-		z-index: 99;
-	}
-	#main {
-		background-color: #ffffff;
-	}
-	.button{
-		position: relative;
-		background-color: rgb(60, 147, 49);
-		border: none;
-		font-size: 17px;
-		color: #ffffff;
 
-		text-align: center;
-		transition-duration: 0.6s;
-		text-decoration: none;
-		overflow: hidden;
-		cursor: pointer;
-	}
-	#title1{
-		grid-area: 1/1/2/4;
-		z-index: 99;
-		text-align: center;
-		color: black;
-		font-size: 20px
-	}
-	#title2{
-		grid-area: 8/1/8/4;
-		z-index: 99;
-		text-align: center;
-		font-size: 20px;
-		font-weight: bolder;
-	}
-	#title3{
-		grid-area: 3/10/3/10;
-		z-index: 99;
-
-	}
-	#title4{
-		grid-area: 8/10/8/10;
-		z-index: 99;
-
-	}
-</style>
 <body>
+    <div class="container" id="main">
+        <div id="title1">
+            <h1>气象污染可视化系统</h1>
+        </div>
+        <div id="title2">
+            100卡口车流量数据统计<br>
+        </div>
+        <div id="title3">
+            <h3>&nbsp;&nbsp;监<br>&nbsp;&nbsp;测<br>&nbsp;&nbsp;站<br>&nbsp;&nbsp;点<br>&nbsp;&nbsp;污<br>&nbsp;&nbsp;染<br>&nbsp;&nbsp;数<br>&nbsp;&nbsp;据</h3>
+        </div>
+        <div id="title4">
+            <h3>&nbsp;空<br>&nbsp;气<br>&nbsp;指<br>&nbsp;标<br>&nbsp;时<br>&nbsp;变<br>&nbsp;过<br>&nbsp;程</h3>
+        </div>
+        <div id="timechange" class="item"></div>
+        <div id="radarChart" class="item"></div>
+        <div id="chart" class="item"></div>
+        <div id="echarts_bmap" class="item"></div>
+    </div>
 
-<div class="container" id="main">
-
-	<div id="title1">
-		<h1>气象污染可视化系统</h1>
-	</div>
-	<div id="title2">
-		100卡口车流量数据统计<br><br><br>
-		通过分析卡口车辆数据以及污染物数据，看出车辆的通过数量增多的这些日期，co、pm2.5、pm10的数值会明显增加，说明汽车的尾气会严重影响城市空气质量，应呼吁人们低碳出行
-	</div>
-	<div id="title3">
-		<h3>&nbsp;&nbsp;监<br>&nbsp;&nbsp;测<br>&nbsp;&nbsp;站<br>&nbsp;&nbsp;点<br>&nbsp;&nbsp;污<br>&nbsp;&nbsp;染<br>&nbsp;&nbsp;数<br>&nbsp;&nbsp;据</h3>
-	</div>
-	<div id="title4">
-		<h3>&nbsp;空<br>&nbsp;气<br>&nbsp;指<br>&nbsp;标<br>&nbsp;时<br>&nbsp;变<br>&nbsp;过<br>&nbsp;程</h3>
-	</div>
-	<div id="timechange" class="item"></div>
-	<div id="radarChart" class="item"></div>
-	<div id="chart1"></div>
-	<div id="chart" class="item"></div>
-	<div id="echarts_bmap" class="item"></div>
-
-</div>
-
+    <script src="js/timechange.js"></script>
+    <script src="js/radarChart.js"></script>
+    <script src="js/chart.js"></script>
+    <script src="js/map.js"></script>
 </body>
-<script src="js/timechange.js"></script>
-<script src="js/radarChart.js"></script>
-<script src="js/chart.js"></script>
-<script src="js/map.js">
-
-</script>
 </html>
