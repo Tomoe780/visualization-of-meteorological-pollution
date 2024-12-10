@@ -36,97 +36,98 @@ function drawChart(data) {
 
     // 配置图表的选项
     var option = {
-        tooltip: {
-            trigger: 'axis',
-            formatter: function(params) {
-                var content = '';
-                for (var i = 0; i < params.length; i++) {
-                    var color = params[i].color;
-                    var legend = params[i].seriesName;
-                    var value = params[i].value;
-                    content += '<span style="background-color:' + color + '; color: white; padding: 4px; border-radius: 4px;">' + legend + '</span>: ' + value + '<br>';
-                }
-                return content;
+    tooltip: {
+        trigger: 'axis',
+        formatter: function(params) {
+            var content = '';
+            for (var i = 0; i < params.length; i++) {
+                var color = params[i].color;
+                var legend = params[i].seriesName;
+                var value = params[i].value;
+                content += '<span style="background-color:' + color + '; color: white; padding: 4px; border-radius: 4px;">' + legend + '</span>: ' + value + '<br>';
             }
+            return content;
+        }
+    },
+    legend: {
+        data: ['PM2.5', 'PM10', 'CO', 'NO2', 'SO2', 'O3']
+    },
+    xAxis: {
+        type: 'category',
+        data: dates
+    },
+    yAxis: {
+        type: 'value'
+    },
+    dataZoom: [
+        {
+            type: 'inside',
+            start: 0,
+            end: 100
         },
-        legend: {
-            data: ['PM2.5', 'PM10', 'CO', 'NO2', 'SO2', 'O3']
+        {
+            start: 0,
+            end: 20
+        }
+    ],
+    series: [
+        {
+            name: 'PM2.5',
+            type: 'line',
+            stack: '总量',
+            data: pm25,
+            lineStyle: {
+                color: '#FFA07A' // 使用一种橙色
+            },
         },
-        xAxis: {
-            type: 'category',
-            data: dates
+        {
+            name: 'PM10',
+            type: 'line',
+            stack: '总量',
+            data: pm10,
+            lineStyle: {
+                color: '#32CD32' // 使用绿色
+            },
         },
-        yAxis: {
-            type: 'value'
+        {
+            name: 'CO',
+            type: 'line',
+            stack: '总量',
+            data: co,
+            lineStyle: {
+                color: '#4682B4' // 使用蓝色
+            },
         },
-        dataZoom: [
-            {
-                type: 'inside',
-                start: 0,
-                end: 100
+        {
+            name: 'NO2',
+            type: 'line',
+            stack: '总量',
+            data: no2,
+            lineStyle: {
+                color: '#FF4500' // 使用红色
             },
-            {
-                start: 0,
-                end: 20
-            }
-        ],
-        series: [
-            {
-                name: 'PM2.5',
-                type: 'line',
-                stack: '总量',
-                data: pm25,
-                lineStyle:{
-                    color: 'rgb(238,166,8)'
-                },
+        },
+        {
+            name: 'SO2',
+            type: 'line',
+            stack: '总量',
+            data: so2,
+            lineStyle: {
+                color: '#8A2BE2' // 使用紫色
             },
-            {
-                name: 'PM10',
-                type: 'line',
-                stack: '总量',
-                data: pm10,
-                lineStyle:{
-                    color: 'rgb(255,127,50)'
-                },
+        },
+        {
+            name: 'O3',
+            type: 'line',
+            stack: '总量',
+            data: o3,
+            lineStyle: {
+                color: '#20B2AA' // 使用淡蓝色
             },
-            {
-                name: 'CO',
-                type: 'line',
-                stack: '总量',
-                lineStyle:{
-                    color: 'rgb(36,40,42)'
-                },
-                data: co
-            },
-            {
-                name: 'NO2',
-                type: 'line',
-                stack: '总量',
-                data: no2,
-                lineStyle:{
-                    color: 'rgb(154,45,6)'
-                },
-            },
-            {
-                name: 'SO2',
-                type: 'line',
-                stack: '总量',
-                data: so2,
-                lineStyle:{
-                    color: 'rgb(248,236,118)'
-                },
-            },
-            {
-                name: 'O3',
-                type: 'line',
-                stack: '总量',
-                data: o3,
-                lineStyle:{
-                    color: 'rgb(8,84,122)'
-                },
-            }
-        ]
-    };
+        }
+    ]
+};
+
     // 使用配置项显示图表
     myChart.setOption(option);
     myChart.on('click',params=>{

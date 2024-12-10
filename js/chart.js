@@ -1,18 +1,19 @@
 drawchart('100卡口')
-function drawchart(p){
-    d3.csv('json/各卡口数据新/'+p+'.csv', function(data) {
+function drawchart(p) {
+    d3.csv('json/各卡口数据新/' + p + '.csv', function(data) {
         var chartDom = document.getElementById('chart');
         var myChart = echarts.init(chartDom);
         var option;
         var dateSet = new Set(data.map(item => `${item.年}.${item.月}.${item.日}`));
         var xAxisData = Array.from(dateSet);
+
         var filteredData1 = data.filter(item => item.车辆类型 === '中型栏板货车');
         var xAxisData1 = filteredData1.map(item => item.过车数量);
         var filteredData3 = data.filter(item => item.车辆类型 === '大型普通客车');
         var xAxisData3 = filteredData3.map(item => item.过车数量);
         var filteredData4 = data.filter(item => item.车辆类型 === '大型汽车');
         var xAxisData4 = filteredData4.map(item => item.过车数量);
-        var filteredData5 = data.filter(item => item.车辆类型 === ' 小型普通客车');
+        var filteredData5 = data.filter(item => item.车辆类型 === '小型普通客车');
         var xAxisData5 = filteredData5.map(item => (+item.过车数量));
         var filteredData6 = data.filter(item => item.车辆类型 === '小型汽车');
         var xAxisData6 = filteredData6.map(item => item.过车数量);
@@ -32,6 +33,7 @@ function drawchart(p){
         var xAxisData13 = filteredData13.map(item => item.过车数量);
         var filteredData14 = data.filter(item => item.车辆类型 === '中型普通客车');
         var xAxisData14 = filteredData14.map(item => item.过车数量);
+
         option = {
             title: {
                 textStyle: {
@@ -62,7 +64,6 @@ function drawchart(p){
             },
 
             xAxis: {
-
                 type: 'category',
                 boundaryGap: false,
                 data: xAxisData,
@@ -77,31 +78,41 @@ function drawchart(p){
                     {
                         gt: 0,
                         lte: 50,
-                        color: '#93CE07'
+                        color: '#81d4fa' // 浅蓝色
                     },
                     {
-                        gt:50,
+                        gt: 50,
                         lte: 100,
-                        color: '#f8ec76'
+                        color: '#20B2AA' // 更亮的蓝色
                     },
                     {
-                        gt:100,
+                        gt: 100,
                         lte: 150,
-                        color: '#ff7f32'
+                        color: '#66bb6a' // 清新的绿
                     },
                     {
-                        gt:150,
+                        gt: 150,
                         lte: 200,
-                        color: '#c72506'
+                        color: '#43a047' // 草地绿
                     },
                     {
-                        gt:200,
+                        gt: 200,
+                        lte: 300,
+                        color: '#ffeb3b' // 明亮的黄色
+                    },
+                    {
+                        gt: 300,
+                        lte: 400,
+                        color: '#ff9800' // 橙色
+                    },
+                    {
+                        gt: 400,
                         lte: 500,
-                        color: '#AA069F'
+                        color: '#f44336' // 红色
                     },
                     {
-                        gt:500,
-                        color: '#5e0483'
+                        gt: 500,
+                        color: '#d32f2f' // 深红色
                     }
                 ],
                 outOfRange: {
@@ -209,3 +220,5 @@ function drawchart(p){
         option && myChart.setOption(option);
     });
 }
+
+
