@@ -46,7 +46,7 @@
     border: 2px solid #eeeeee;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    /*height: 300px;*/
+
 }
 
 #timechange {
@@ -70,14 +70,4 @@
     top: 560px;
 }
 
-#title3 {
-    grid-area: 3 / 10 / 3 / 13;
-    z-index: 99;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
 
-#title4 {
-    grid-area: 8 / 10 / 8 / 13;
-    z-index: 99;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
